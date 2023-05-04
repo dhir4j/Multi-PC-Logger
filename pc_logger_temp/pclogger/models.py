@@ -8,3 +8,8 @@ class PC(models.Model):
     hdd = models.FloatField()
     ip_address = models.CharField(max_length=50)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+class Alert(models.Model):
+    pc = models.ForeignKey(PC, on_delete=models.CASCADE)
+    message = models.CharField(max_length=200)
+    is_approved = models.BooleanField(default=False)
